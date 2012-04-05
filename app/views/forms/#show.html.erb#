@@ -1,0 +1,11 @@
+<% provide(:title, @form.name) %>
+<div class="row">
+  <aside class="span7">
+    <section>
+      <h2>
+	<%= image_tag @form.pdf_form.url(:preview), class: "gravatar" %>
+	<%= @form.name%>
+      </h2>
+    </section>
+  </aside>
+</div>

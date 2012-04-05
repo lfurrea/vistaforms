@@ -52,10 +52,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { 
-  font-size: 3em;
+  font-size: 2.2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+  
+}
+
+.pt {
+    float: left;
+    padding-left: 20px;
 }
 
 h2 { 
@@ -141,6 +147,21 @@ input, textarea, select, .uneditable-input {
 .field_with_errors {
     @extend .control-group;
     @extend .error;
+}
+
+/* forms index */
+
+.forms {
+    list-style: none;
+    margin: 0;
+    li {
+        overflow: auto;
+	padding: 10px 0;
+	border-top: 1px solid $grayLighter;
+	&:last-child{
+	    border-bottom: 1px solid $grayLighter;
+	}
+    }
 }
 
 /* footer */

@@ -1,0 +1,14 @@
+<%= provide(:title, 'All forms') %>
+<div class="row">
+<h1 class="span1">Forms</h1>
+<%= link_to "+ New Form", new_form_path, class: "offset9 btn btn-success btn-large" %>
+</div>
+
+<ul class="forms">
+  <% @forms.each do |form| %>
+  <li>
+    <%= image_tag form.pdf_form.url(:preview), class: "gravatar", size: 52 %> 
+    <%= link_to form.name, form %>
+  </li>
+  <% end %>
+</ul>
