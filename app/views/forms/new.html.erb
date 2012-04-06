@@ -12,7 +12,8 @@
 	<%= f.file_field :pdf_form, :label => "File input" %>
       </div>
       <div class="form-actions">
-      <%= f.button :submit, :class => "btn btn-large btn-primary"  %>
+      <!-- <%= f.button :submit, :class => "btn btn-large btn-primary"  %> -->
+      <button id="my-btn" class="btn btn-large btn-primary" data-loading-text="Uploading..." name="commit" value="Create Form">Create Form</button>
       </div>
     <% end %>
   </div>
