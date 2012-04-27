@@ -50,7 +50,7 @@ class Application < ActiveRecord::Base
   def extract_values
     oo = Excel.new(excel_attachment.queued_for_write[:original].path, false, :ignore)
     oo.default_sheet = oo.sheets.first
-    excel_mapping = YAML.load(File.read("#{Rails.root}/config/FdfToExcelMapping.yml"))
+    excel_mapping = YAML.load_file("#{Rails.root}/config/FdfToExcelMapping.yml")
     imported_attributes = { }
     excel_mapping.each do |field, column|
       value = oo.cell(2, column)
