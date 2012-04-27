@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: cce55f630370e1217428e2f8ccc19851f46a5c32
+  specs:
+    paperclip (3.0.2)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -113,11 +124,6 @@ GEM
       faraday (~> 0.7)
       httpauth (~> 0.1)
       multi_json (~> 1.0)
-    paperclip (2.7.0)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
-      cocaine (>= 0.0.2)
-      mime-types
     pg (0.12.2)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -223,7 +229,7 @@ DEPENDENCIES
   guard-spork (= 0.3.2)
   jquery-rails (= 2.0.0)
   libnotify (= 0.5.9)
-  paperclip (= 2.7)
+  paperclip!
   pg (= 0.12.2)
   rails (= 3.2.2)
   rb-inotify (= 0.8.8)
