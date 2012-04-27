@@ -15,11 +15,9 @@
 require 'spec_helper'
 
 describe Form do
-  #let(:carrier) { FactoryGirl.create(:carrier) }
-  #before { @form = Factory.create(:form) }
+  #let(:form)  { FactoryGirl.create(:form) }
 
-
-  #subject { @form }
+  #subject { form }
 
   #it { should respond_to(:name) }
   #it { should respond_to(:carrier_id) }

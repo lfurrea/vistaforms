@@ -1,0 +1,15 @@
+<div class="stats">
+  <a href="<%= applications_form_path(@form) %>">
+    <strong id="applications" class="stat">
+      <%= @form.applications.count %>
+    </strong>
+    <span>
+    <% word = "application" %>
+    <% if @form.applications.count == 0 || @form.applications.count >1 %>
+     <%= word.pluralize %>
+    <% else %>
+     <%= word %>
+    <% end %>
+    </span>
+  </a>
+</div>

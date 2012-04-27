@@ -18,6 +18,7 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.find(params[:id])
+    @application = current_user.applications.build
   end
 
   def index

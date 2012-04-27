@@ -125,6 +125,32 @@ aside {
     margin-right: 10px; 
 }
 
+.stats {
+  text-align: center;
+  a {
+    border-left: 1px solid $grayLighter;
+    color: #4183C4;
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;
+    font-size: 36px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  span {
+      padding-top: 5px;
+      font-size: 12px;
+  } 
+}
+
+.lefty {
+    float: right;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {

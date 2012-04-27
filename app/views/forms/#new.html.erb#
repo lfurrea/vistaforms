@@ -1,0 +1,20 @@
+<% provide(:title, 'Add Form') %>
+<h1>Add Form</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= simple_form_for(@form, :html => {:multipart => true }) do |f| %>
+      <%= render :partial => 'shared/error_messages', :object => @form %>
+      <%= f.association :carrier, :include_blank => false %>
+      <%= f.input :name %>
+      <div class="controls">
+	<label class="string required control-label" for="form_name">* PDF Form</label> 
+	<%= f.file_field :pdf_form, :label => "File input" %>
+      </div>
+      <div class="form-actions">
+      <!-- <%= f.button :submit, :class => "btn btn-large btn-primary"  %> -->
+      <button id="my-btn" class="btn btn-large btn-primary" data-loading-text="Uploading..." name="commit" value="Create Form">Create Form</button>
+      </div>
+    <% end %>
+  </div>
+</div>

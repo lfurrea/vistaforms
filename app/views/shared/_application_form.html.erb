@@ -1,0 +1,19 @@
+<span>
+  <%= simple_form_for(@application, :html => {:multipart => true, :class => "form-horizontal" }) do |f| %>
+  <%= render :partial => 'shared/error_messages', :object => @application %>
+  <div class="control-group">
+    <%= f.input :form_id, :as => :hidden, :input_html => { :name => "application[form_id]",:value => @form.id } %>
+    <label class="control-label" for="fileInput">Excel Input</label>
+    
+    <div class="controls">
+      
+      <%= f.file_field :excel_attachment, :label => "Excel Import", :class => "span3"%>
+      
+    </div>
+  </div>
+  <!-- <%= f.button :submit, :class => "btn btn-large btn-primary"  %> -->
+  <div class="form-actions">
+    <button id="my-btn" class="btn btn-large btn-primary" data-loading-text="Processing..." name="commit" value="Fill Me!">Fill Me!</button>
+  </div>
+  <% end %>
+</span>

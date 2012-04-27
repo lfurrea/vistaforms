@@ -1,11 +1,19 @@
 <% provide(:title, @form.name) %>
 <div class="row">
-  <aside class="span7">
+  <aside class="span11">
     <section>
       <h2>
-	<%= image_tag @form.pdf_form.url(:preview), class: "gravatar" %>
-	<%= @form.name%>
+	<div class="span2">
+	  <%= image_tag @form.pdf_form.url(:preview), class: "gravatar" %>
+	</div>
+	<div class="span6">
+	  <%= @form.name%>
+	</div>
       </h2>
+      <div class="span6">
+	<%= render 'shared/stats' %>
+	<%= render 'shared/application_form' %>
+      </div>
     </section>
   </aside>
 </div>

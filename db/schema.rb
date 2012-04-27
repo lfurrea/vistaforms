@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403185403) do
+ActiveRecord::Schema.define(:version => 20120427032551) do
+
+  create_table "applications", :force => true do |t|
+    t.string   "cu_name"
+    t.string   "cu_email"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "user_id"
+    t.integer  "form_id"
+    t.string   "excel_attachment_file_name"
+    t.string   "excel_attachment_content_type"
+    t.integer  "excel_attachment_file_size"
+    t.datetime "excel_attachment_updated_at"
+    t.string   "filled_pdf_file_name"
+    t.string   "filled_pdf_content_type"
+    t.integer  "filled_pdf_file_size"
+    t.datetime "filled_pdf_updated_at"
+  end
 
   create_table "carriers", :force => true do |t|
     t.string   "name"

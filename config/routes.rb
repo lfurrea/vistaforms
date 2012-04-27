@@ -1,6 +1,11 @@
 SampleApp::Application.routes.draw do
   resources :users
-  resources :forms
+  resources :forms do
+    member do
+      get :applications
+    end
+  end
+  resources :applications, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
   root                   :to => 'forms#index'

@@ -12,6 +12,8 @@
 
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
+  has_many :applications
+  has_many :forms, :through => :applications
   has_secure_password
 
   validates :name, presence: true, length: { maximum: 50 }
