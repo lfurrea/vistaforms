@@ -56,6 +56,7 @@ class Application < ActiveRecord::Base
       value = oo.cell(2, column)
       imported_attributes[field] = value
     end
+
     self.cu_name = imported_attributes["FirstName"] + " " + imported_attributes["LastName"]
     self.cu_email = imported_attributes["Email"]
     fdf = createFDF(imported_attributes)
@@ -66,7 +67,4 @@ class Application < ActiveRecord::Base
     apdf.close
   end
 
-  def before_save
-    self.excel_attachment = nil
-  end
 end

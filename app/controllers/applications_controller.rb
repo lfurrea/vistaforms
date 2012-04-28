@@ -5,7 +5,6 @@ class ApplicationsController < ApplicationController
     @form = Form.find(params[:application][:form_id])
     @application = current_user.applications.build(cu_name: "testy", cu_email: "testy@testy.com", :form_id => params[:application][:form_id], :excel_attachment => params[:application][:excel_attachment])
     if @application.save
-#      flash[:success] = render_to_string(:partial => "shared/pdf_sucess_message").html_safe
       flash[:success] = "Insurance application has been filled. You can #{ActionController::Base.helpers.link_to "Download", @application.filled_pdf.expiring_url(:original)} a copy.".html_safe
       redirect_to root_path
     else
