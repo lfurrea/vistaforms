@@ -42,7 +42,7 @@ class Application < ActiveRecord::Base
   :s3_headers => { 'Content-Disposition' => 'attachment' },
   :url => "s3.amazonaws.com",
   :path => "applications/:id/:style/:basename.:extension",
-  :bucket => 'PAPERCLIP_VISTAFORMS'
+  :bucket => 'PAPERCLIP_VISTAFORMS_HEROKU'
   has_attached_file :excel_attachment
 
   after_excel_attachment_post_process :extract_values
