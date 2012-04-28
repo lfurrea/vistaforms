@@ -56,14 +56,13 @@ class Application < ActiveRecord::Base
       value = oo.cell(2, column)
       imported_attributes[field] = value
     end
-
     self.cu_name = imported_attributes["FirstName"] + " " + imported_attributes["LastName"]
     self.cu_email = imported_attributes["Email"]
     fdf = createFDF(imported_attributes)
     form = Form.find(form_id)
     pdf_output = `pdftk #{form.pdf_form.url(:original)} fill_form #{fdf.path} output - flatten`
     apdf = File.new("/tmp/pdf_" + rand.to_s, "w") << pdf_output
-    self.filled_pdf = ActionDispatch::Http::UploadedFile.new(filename: "#{form.name}_#{@cu_name}.pdf", type: "application/pdf", head: "Content-Disposition: form-data; name=\"application[filled_pdf]\"; filename=\"#{form.name}_#{self.cu_email}.pdf\"\r\nContent-Type: application/pdf\r\n", tempfile: apdf)
+    self.filled_pdf = ActionDispatch::Http::UploadedFile.new(filename: "#{form.name}_#{self.cu_name}.pdf", type: "application/pdf", head: "Content-Disposition: form-data; name=\"application[filled_pdf]\"; filename=\"#{form.name}_#{self.cu_email}.pdf\"\r\nContent-Type: application/pdf\r\n", tempfile: apdf)
     apdf.close
   end
 
