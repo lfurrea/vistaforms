@@ -60,7 +60,12 @@ class Application < ActiveRecord::Base
     self.cu_email = imported_attributes["Email"]
     fdf = createFDF(imported_attributes)
     form = Form.find(form_id)
-    pdf_output = `pdftk #{form.pdf_form.url(:original)} fill_form #{fdf.path} output - flatten`
+
+    s3 = AWS::S3.new(YAML.load(File.read("#{Rails.root}/config/aws_s3.yml")))
+    t = s3.buckets['PAPERCLIP_VISTAFORMS'].objects[form.pdf_form.path(:original)]
+    content = t.read.force_encoding('utf-8')
+    bpdf = File.new("/tmp/pdf_" + rand.to_s, "w") << content
+    pdf_output = `pdftk #{bpdf.path} fill_form #{fdf.path} output - flatten`
     apdf = File.new("/tmp/pdf_" + rand.to_s, "w") << pdf_output
     self.filled_pdf = ActionDispatch::Http::UploadedFile.new(filename: "#{form.name}_#{self.cu_name}.pdf", type: "application/pdf", head: "Content-Disposition: form-data; name=\"application[filled_pdf]\"; filename=\"#{form.name}_#{self.cu_email}.pdf\"\r\nContent-Type: application/pdf\r\n", tempfile: apdf)
     apdf.close
