@@ -41,9 +41,11 @@ class Application < ActiveRecord::Base
   :s3_credentials => "#{Rails.root}/config/aws_s3.yml",
   :s3_headers => { 'Content-Disposition' => 'attachment' },
   :url => "s3.amazonaws.com",
-  :path => "applications/:id/:style/:basename.:extension",
-  :bucket => 'PAPERCLIP_VISTAFORMS_HEROKU'
-  has_attached_file :excel_attachment
+  :path => "applications/:id/:basename.:extension",
+  :bucket => 'VISTAFORMS'
+  has_attached_file :excel_attachment,
+  :path => "/tmp/:basename_:id.:extension"
+
 
   after_excel_attachment_post_process :extract_values
 
@@ -64,11 +66,12 @@ class Application < ActiveRecord::Base
     s3 = AWS::S3.new(YAML.load(File.read("#{Rails.root}/config/aws_s3.yml")))
     t = s3.buckets['PAPERCLIP_VISTAFORMS'].objects[form.pdf_form.path(:original)]
     content = t.read.force_encoding('utf-8')
-    bpdf = File.new("/tmp/pdf_" + rand.to_s, "w") << content
-    pdf_output = `pdftk #{bpdf.path} fill_form #{fdf.path} output - flatten`
-    apdf = File.new("/tmp/pdf_" + rand.to_s, "w") << pdf_output
-    self.filled_pdf = ActionDispatch::Http::UploadedFile.new(filename: "#{form.name}_#{self.cu_name}.pdf", type: "application/pdf", head: "Content-Disposition: form-data; name=\"application[filled_pdf]\"; filename=\"#{form.name}_#{self.cu_email}.pdf\"\r\nContent-Type: application/pdf\r\n", tempfile: apdf)
-    apdf.close
+    form_pdf = File.new("/tmp/form_pdf_" + rand.to_s, "w") << content
+    pdf_output = `pdftk #{form_pdf.path} fill_form #{fdf.path} output - flatten`
+    tmp_filled_pdf = File.new("/tmp/tmp_filled_pdf_" + rand.to_s, "w") << pdf_output
+    timestamp = Time.now.to_s.gsub(/\s/,'_')
+    self.filled_pdf = ActionDispatch::Http::UploadedFile.new(filename: "#{form.name}_#{self.cu_name}_#{timestamp}.pdf", type: "application/pdf", head: "Content-Disposition: form-data; name=\"application[filled_pdf]\"; filename=\"#{form.name}_#{self.cu_email}.pdf\"\r\nContent-Type: application/pdf\r\n", tempfile: tmp_filled_pdf)
+    tmp_filled_pdf.close
   end
 
 end

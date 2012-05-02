@@ -20,7 +20,7 @@ module ApplicationsHelper
     # trailer note the "1 0 R" reference to "1 0 obj" above
     data += "trailer\n<<\n/Root 1 0 R \n\n>>\n"
     data += "%%EOF\s\n"
-    afile = File.new("/tmp/rails_" + rand.to_s, "w") << data
+    afile = File.new("/tmp/fdf_" + rand.to_s, "w") << data
     afile.close
     return afile
   end
