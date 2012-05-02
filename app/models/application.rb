@@ -50,14 +50,14 @@ class Application < ActiveRecord::Base
   after_excel_attachment_post_process :extract_values
 
   def extract_values
-#    oo = Excel.new(excel_attachment.queued_for_write[:original].path, false, :ignore)
-#    oo.default_sheet = oo.sheets.first
-#    excel_mapping = YAML.load_file("#{Rails.root}/config/FdfToExcelMapping.yml")
-    imported_attributes = {"FirstName" => "Luis", "LastName" => "Urrea", "Email" => "lfurrea@simplecs.net" }
-#    excel_mapping.each do |field, column|
-#      value = oo.cell(2, column)
-#      imported_attributes[field] = value
-#    end
+    oo = Excel.new(excel_attachment.queued_for_write[:original].path, false, :ignore)
+    oo.default_sheet = oo.sheets.first
+    excel_mapping = YAML.load_file("#{Rails.root}/config/FdfToExcelMapping.yml")
+    imported_attributes = {}
+    excel_mapping.each do |field, column|
+      value = oo.cell(2, column)
+      imported_attributes[field] = value
+    end
     self.cu_name = imported_attributes["FirstName"] + " " + imported_attributes["LastName"]
     self.cu_email = imported_attributes["Email"]
     fdf = createFDF(imported_attributes)
