@@ -15,3 +15,5 @@
 /tmp
 *~
 bundler_stubs/
+/config/database.yml
+/config/aws_s3.yml
