@@ -1,7 +1,9 @@
+require "rvm/capistrano"
 require "bundler/capistrano"
 
 server "50.116.22.227", :web, :app, :db, primary: true
 
+set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
 set :application, "sample_app"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
