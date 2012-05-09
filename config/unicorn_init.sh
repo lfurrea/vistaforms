@@ -7,7 +7,7 @@ set -e
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/home/deployer/apps/sample_app/current
 PID=$APP_ROOT/tmp/pids/unicorn.pid
-CMD="$APP_ROOT/bin/unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
+CMD="$APP_ROOT/bin/unicorn -D -E production -c $APP_ROOT/config/unicorn.rb"
 action="$1"
 set -u
 
