@@ -1,4 +1,4 @@
-working_directory "/home/deployer/apps/sample_app"
+working_directory "/home/deployer/apps/sample_app/current"
 pid "/home/deployer/apps/sample_app/tmp/pids/unicorn.pid"
 stderr_path "/home/deployer/apps/sample_app/log/unicorn.log"
 stdout_path "/home/deployer/apps/sample_app/log/unicorn.log"

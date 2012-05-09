@@ -57,7 +57,7 @@ end
 # gem 'jbuilder'
 
 # Use unicorn as the app server
- gem 'unicorn', :git => 'git://github.com/defunkt/unicorn.git'
+ gem 'unicorn'
 
 # Deploy with Capistrano
  gem 'capistrano'
