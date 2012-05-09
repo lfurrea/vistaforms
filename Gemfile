@@ -8,7 +8,7 @@ gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'simple_form'
 gem 'aws-sdk', '~>1.3.4'
 gem 'roo'
-gem 'mysql2'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
