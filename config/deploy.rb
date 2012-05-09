@@ -1,8 +1,8 @@
-require "rvm/capistrano"
-require "bundler/capistrano"
+require "rvm/capistrano"require "bundler/capistrano"
 
 server "50.116.22.227", :web, :app, :db, primary: true
 
+set :bundle_flags,    "--deployment --quiet --binstubs"
 set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
 set :application, "sample_app"
 set :user, "deployer"
