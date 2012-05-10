@@ -58,7 +58,8 @@ class Application < ActiveRecord::Base
       value = oo.cell(2, column)
       imported_attributes[field] = value
     end
-    self.cu_name = imported_attributes["FirstName"] + " " + imported_attributes["LastName"]
+    #This should be taken from the mapping as well
+    self.cu_name = imported_attributes["First"] + " " + imported_attributes["Last"]
     self.cu_email = imported_attributes["Email"]
     fdf = createFDF(imported_attributes)
     form = Form.find(form_id)
