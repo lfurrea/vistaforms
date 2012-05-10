@@ -1,38 +1,38 @@
 RefName: A
-LastName: B
-FirstName: C
+Last: B
+First: C
 County: D
 Company: E
-MainPhone: F
+Main: F
 Code: G
 Source: H
 Plan: I
 Type: J
-CurrentInsurance: K
-TypeOfCoverage: L
-DateAdded: M
+Insurance: K
+type of cvge: L
+Date Added: M
 Status: N
-Address1: O
+Address: O
 Address2: P
-City: Q
+City/St/Zip: Q
 State: R
 Zip: S
 Email: T
 DOB: U
 SSN: V
-Eff2Exp: W
-Business: X
-HireDate: Y
+eff.date/Exp: W
+business: X
+Hire Date: Y
 Effective: Z
-PP: AA
+Primary Phy: AA
 CName1: AB
 CDOB1: AC
 CSSN1: AD
-CPP1: AE
+CPCP1: AE
 CName2: AF
 CDOB2: AG
 CSSN2: AH
-CPP2: AI
+CPCP2: AI
 Spouse: AJ
 SpouseDOB: AK
 SpouseSSN: AL
@@ -45,4 +45,4 @@ CName4: AR
 CDOB4: AS
 CSSN4: AT
 CPCP4: AU
-Cur.Ins: AV
+Cur.Ins/Brkr: AV
