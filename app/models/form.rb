@@ -29,7 +29,7 @@ class Form < ActiveRecord::Base
   :s3_headers => { 'Content-Disposition' => 'attachment' },
   :url => "s3.amazonaws.com",
   :path => "forms/:id/:style/:basename.:extension",
-  :bucket => 'PAPERCLIP_VISTAFORMS',
+  :bucket => 'VISTAFORMS',
   :styles => {
     :preview => { :geometry => '135', :format => :png}}
 
@@ -39,7 +39,7 @@ class Form < ActiveRecord::Base
     return unless force or pdf_form_content_type.include?('pdf')
 
     s3 = AWS::S3.new(YAML.load(File.read("#{Rails.root}/config/aws_s3.yml")))
-    t = s3.buckets['PAPERCLIP_VISTAFORMS'].objects[pdf_form.path(:preview)]
+    t = s3.buckets['VISTAFORMS'].objects[pdf_form.path(:preview)]
     content = t.read
     t.write(:data => content, :content_type => 'image/png', :content_disposition => 'inline', :acl => :public_read)
     nil
