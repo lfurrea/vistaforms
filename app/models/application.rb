@@ -56,6 +56,11 @@ class Application < ActiveRecord::Base
     imported_attributes = {}
     excel_mapping.each do |field, column|
       value = oo.cell(2, column)
+      if value.class == Float then
+        value = "%.0f" %value.to_s
+      elsif value.class == Date
+        value = value.strftime("%m-%d-%Y")
+      end
       imported_attributes[field] = value
     end
     #This should be taken from the mapping as well
